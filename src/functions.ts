@@ -409,13 +409,7 @@ ${mainTypes}
 };
 
 export const transformPackageContent = (content: PackageContent, basePath: string): void => {
-    if (
-        content &&
-        content.package &&
-        content.package.clientModule &&
-        content.package.clientModule.length > 0 &&
-        content.package.clientModule[0].widgetFiles.length > 0
-    ) {
+    try {
         content.package.clientModule[0].widgetFiles[0].widgetFile.forEach(file => {
             let content: MendixXML = {};
             let output = null;
@@ -434,7 +428,7 @@ export const transformPackageContent = (content: PackageContent, basePath: strin
                 writeFileSync(path.join(basePath, "../typings/" + output), generatedContent);
             }
         });
-    } else {
+    } catch (e) {
         throw new PluginError("Typing generation", {
             message: "[XML] Incorrect package.xml file, please check Mendix Documentation.."
         });
