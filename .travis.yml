@@ -1,0 +1,13 @@
+dist: xenial
+language: node_js
+cache: npm
+branches:
+    only:
+        - master
+
+jobs:
+    include:
+        - name: "Build"
+          script: npm run build
+        - name: "Test"
+          script: npm run test
