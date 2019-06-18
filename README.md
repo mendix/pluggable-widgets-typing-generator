@@ -34,7 +34,7 @@ import { typingGenerator } from "@mendix/pluggable-widgets-typing-generator";
 ```
 function generateTypings() {
     return gulp
-        .src(`./src/package.xml`)
+        .src("./src/package.xml")
         .pipe(typingGenerator());
 }
 ```
