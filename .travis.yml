@@ -5,9 +5,16 @@ branches:
     only:
         - master
 
-jobs:
-    include:
-        - name: "Build"
-          script: npm run build
-        - name: "Test"
-          script: npm run test
+node_js:
+    - "node"
+
+before_script:
+    - cd ./nodejs
+
+script:
+    - npm install
+    - npm run postinstall
+
+after_script:
+    - npm run build
+    - npm run test
