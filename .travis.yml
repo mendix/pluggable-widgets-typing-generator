@@ -6,10 +6,7 @@ branches:
         - master
 
 node_js:
-    - "node"
-
-before_script:
-    - cd ./nodejs
+    - "10.15.0"
 
 script:
     - npm install
