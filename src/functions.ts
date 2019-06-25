@@ -415,13 +415,13 @@ export const transformPackageContent = (content: PackageContent, basePath: strin
             let output = null;
             if (file.$.path) {
                 const fileContent = readFileSync(path.join(basePath, file.$.path), "utf-8");
-                parseString(fileContent, {}, function(err: Error, result: any) {
+                parseString(fileContent, {}, function(err: Error, result: MendixXML) {
                     if (err) {
                         throw new PluginError("Typing generation", {
                             message: err.message
                         });
                     }
-                    content = result as MendixXML;
+                    content = result;
                     output = replaceExt(file.$.path, "Props.d.ts");
                 });
                 const generatedContent = transformJsonContent(content, filterName(file.$.path));
@@ -438,8 +438,5 @@ export const transformPackageContent = (content: PackageContent, basePath: strin
 const filterName = (file: string): string => {
     file = file.replace(".xml", "");
     const parts = file.split("/");
-    if (parts.length > 0) {
-        return parts[parts.length - 1];
-    }
-    return "";
+    return parts.length > 0 ? parts[parts.length - 1] : "";
 };
