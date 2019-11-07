@@ -329,7 +329,7 @@ export const transformJsonContent = (jsonContent: MendixXML, widgetName: string)
     const mainTypes = properties
         .map(prop => {
             let name = prop.$.key;
-            if (prop.$.required && prop.$.required === "false" && prop.$.type !== "object") {
+            if (prop.$.required && prop.$.required === "false" && prop.$.type !== "object" || prop.$.type === "action") {
                 name += "?";
             }
             const type = translateType(prop, childTypes, false, mobile);
@@ -340,7 +340,7 @@ export const transformJsonContent = (jsonContent: MendixXML, widgetName: string)
         ? properties
               .map(prop => {
                   let name = prop.$.key;
-                  if (prop.$.required && prop.$.required === "false" && prop.$.type !== "object" || prop.$.type !== "action" ) {
+                  if (prop.$.required && prop.$.required === "false" && prop.$.type !== "object") {
                       name += "?";
                   }
                   const type = translateType(prop, childTypes, true, mobile);
