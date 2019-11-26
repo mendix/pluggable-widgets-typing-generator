@@ -46,7 +46,7 @@ import { ReactNode } from "react";
 
 interface CommonProps<Style> {
     name: string;
-    style: Array<Partial<Style>>;
+    style: Partial<Style>[];
 }
 
 export interface MyWidgetProps<Style> extends CommonProps<Style> {
