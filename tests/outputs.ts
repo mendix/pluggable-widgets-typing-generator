@@ -3,7 +3,7 @@ export const nativeResult = `/**
  * WARNING: All changes made to this file will be overwritten
  * @author Mendix Widgets Team
  */
-import { ActionValue, DynamicValue, EditableValue, FileValue, ImageValue } from "mendix";
+import { ActionValue, DynamicValue, EditableValue, FileValue, NativeImage } from "mendix";
 
 interface CommonProps<Style> {
     name: string;
@@ -18,7 +18,7 @@ export interface ActionsType {
     name: string;
     enabled: boolean;
     action?: ActionValue;
-    image: DynamicValue<ImageValue>;
+    image: DynamicValue<NativeImage>;
 }
 
 export interface MyWidgetProps<Style> extends CommonProps<Style> {
@@ -31,7 +31,7 @@ export interface MyWidgetProps<Style> extends CommonProps<Style> {
     mywidgetType: MywidgetTypeEnum;
     tries?: number;
     amount?: BigJs.Big;
-    image?: DynamicValue<ImageValue>;
+    image?: DynamicValue<NativeImage>;
     onClickAction?: ActionValue;
     onChange?: ActionValue;
     actions: ActionsType[];
@@ -45,7 +45,7 @@ export const webResult = `/**
  */
 import { CSSProperties } from "react";
 import { ActionPreview } from "@mendix/pluggable-widgets-typing-generator/dist/typings";
-import { ActionValue, DynamicValue, EditableValue, FileValue, ImageValue } from "mendix";
+import { ActionValue, DynamicValue, EditableValue, FileValue, WebImage } from "mendix";
 
 interface CommonProps {
     name: string;
@@ -62,14 +62,14 @@ export interface ActionsType {
     name: string;
     enabled: boolean;
     action?: ActionValue;
-    image: DynamicValue<ImageValue>;
+    image: DynamicValue<WebImage>;
 }
 
 export interface ActionsPreviewType {
     name: string;
     enabled: boolean;
     action: ActionPreview;
-    image: ImageValue;
+    image: WebImage;
 }
 
 export interface ActionsVisibilityType {
@@ -89,7 +89,7 @@ export interface MyWidgetContainerProps extends CommonProps {
     mywidgetType: MywidgetTypeEnum;
     tries?: number;
     amount?: BigJs.Big;
-    image?: DynamicValue<ImageValue>;
+    image?: DynamicValue<WebImage>;
     onClickAction?: ActionValue;
     onChange?: ActionValue;
     actions: ActionsType[];
@@ -108,7 +108,7 @@ export interface MyWidgetPreviewProps {
     mywidgetType: MywidgetTypeEnum;
     tries?: number;
     amount?: BigJs.Big;
-    image?: ImageValue;
+    image?: WebImage;
     onClickAction?: ActionPreview;
     onChange?: ActionPreview;
     actions: ActionsPreviewType[];

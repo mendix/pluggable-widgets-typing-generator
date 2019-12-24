@@ -47,9 +47,9 @@ const translateType = (
         case "decimal":
             return "BigJs.Big";
         case "icon":
-            return preview && !isChild ? "IconValue" : "DynamicValue<IconValue>";
+            return isMobile ? "DynamicValue<NativeIcon>" : preview && !isChild ? "WebIcon" : "DynamicValue<WebIcon>";
         case "image":
-            return preview && !isChild ? "ImageValue" : "DynamicValue<ImageValue>";
+            return isMobile ? "DynamicValue<NativeImage>" : preview && !isChild ? "WebImage" : "DynamicValue<WebImage>";
         case "enumeration":
             return generateEnums(prop, !preview ? childTypes : []);
         case "object":
@@ -282,9 +282,18 @@ function findImports(mainTypes: string, childTypes: string[]): string {
         types += childTypes.join("\n");
     }
 
-    const imports = ["ActionValue", "DynamicValue", "EditableValue", "FileValue", "IconValue", "ImageValue"].filter(
-        type => types.includes(type)
-    );
+    const imports = [
+        "ActionValue",
+        "DynamicValue",
+        "EditableValue",
+        "FileValue",
+        "IconValue",
+        "ImageValue",
+        "NativeIcon",
+        "NativeImage",
+        "WebIcon",
+        "WebImage"
+    ].filter(type => types.includes(type));
 
     return imports && imports.length > 0
         ? `

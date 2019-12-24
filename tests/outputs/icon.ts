@@ -5,7 +5,7 @@ export const iconWebOutput = `/**
  */
 import { CSSProperties } from "react";
 import { ActionPreview } from "@mendix/pluggable-widgets-typing-generator/dist/typings";
-import { DynamicValue, IconValue } from "mendix";
+import { DynamicValue, WebIcon } from "mendix";
 
 interface CommonProps {
     name: string;
@@ -15,13 +15,13 @@ interface CommonProps {
 }
 
 export interface IconsType {
-    firstIcon: DynamicValue<IconValue>;
-    secondIcon: DynamicValue<IconValue>;
+    firstIcon: DynamicValue<WebIcon>;
+    secondIcon: DynamicValue<WebIcon>;
 }
 
 export interface IconsPreviewType {
-    firstIcon: IconValue;
-    secondIcon: IconValue;
+    firstIcon: WebIcon;
+    secondIcon: WebIcon;
 }
 
 export interface IconsVisibilityType {
@@ -50,7 +50,7 @@ export const iconNativeOutput = `/**
  * WARNING: All changes made to this file will be overwritten
  * @author Mendix Widgets Team
  */
-import { DynamicValue, IconValue } from "mendix";
+import { DynamicValue, NativeIcon } from "mendix";
 
 interface CommonProps<Style> {
     name: string;
@@ -58,8 +58,8 @@ interface CommonProps<Style> {
 }
 
 export interface IconsType {
-    firstIcon: DynamicValue<IconValue>;
-    secondIcon: DynamicValue<IconValue>;
+    firstIcon: DynamicValue<NativeIcon>;
+    secondIcon: DynamicValue<NativeIcon>;
 }
 
 export interface MyWidgetProps<Style> extends CommonProps<Style> {
