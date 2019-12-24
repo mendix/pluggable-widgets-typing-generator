@@ -47,9 +47,9 @@ const translateType = (
         case "decimal":
             return "BigJs.Big";
         case "icon":
-            return isMobile ? "DynamicValue<NativeIcon>" : preview && !isChild ? "WebIcon" : "DynamicValue<WebIcon>";
+            return preview && !isChild ? "IconValue" : "DynamicValue<IconValue>";
         case "image":
-            return isMobile ? "DynamicValue<NativeImage>" : preview && !isChild ? "WebImage" : "DynamicValue<WebImage>";
+            return preview && !isChild ? "ImageValue" : "DynamicValue<ImageValue>";
         case "enumeration":
             return generateEnums(prop, !preview ? childTypes : []);
         case "object":
@@ -64,6 +64,8 @@ const translateType = (
             return prop.$.type;
         case "widgets":
             return "ReactNode";
+        case "file":
+            return preview && !isChild ? "FileValue" : "DynamicValue<FileValue>";
         default:
             return "any";
     }
@@ -280,15 +282,9 @@ function findImports(mainTypes: string, childTypes: string[]): string {
         types += childTypes.join("\n");
     }
 
-    const imports = [
-        "ActionValue",
-        "DynamicValue",
-        "EditableValue",
-        "NativeIcon",
-        "NativeImage",
-        "WebIcon",
-        "WebImage"
-    ].filter(type => types.includes(type));
+    const imports = ["ActionValue", "DynamicValue", "EditableValue", "FileValue", "IconValue", "ImageValue"].filter(
+        type => types.includes(type)
+    );
 
     return imports && imports.length > 0
         ? `

@@ -1,11 +1,11 @@
-export const iconWebOutput = `/**
+export const fileWebOutput = `/**
  * This file was generated from MyWidget.xml
  * WARNING: All changes made to this file will be overwritten
  * @author Mendix Widgets Team
  */
 import { CSSProperties } from "react";
 import { ActionPreview } from "@mendix/pluggable-widgets-typing-generator/dist/typings";
-import { DynamicValue, IconValue } from "mendix";
+import { ActionValue, DynamicValue, EditableValue, FileValue } from "mendix";
 
 interface CommonProps {
     name: string;
@@ -14,55 +14,42 @@ interface CommonProps {
     tabIndex: number;
 }
 
-export interface IconsType {
-    firstIcon: DynamicValue<IconValue>;
-    secondIcon: DynamicValue<IconValue>;
-}
-
-export interface IconsPreviewType {
-    firstIcon: IconValue;
-    secondIcon: IconValue;
-}
-
-export interface IconsVisibilityType {
-    firstIcon: boolean;
-    secondIcon: boolean;
-}
-
 export interface MyWidgetContainerProps extends CommonProps {
-    icons: IconsType[];
+    file: DynamicValue<FileValue>;
+    description: EditableValue<string>;
+    action?: ActionValue;
 }
 
 export interface MyWidgetPreviewProps {
     class: string;
     style: string;
     styleObject: CSSProperties;
-    icons: IconsPreviewType[];
+    file: FileValue;
+    description: string;
+    action: ActionPreview;
 }
 
 export interface VisibilityMap {
-    icons: IconsVisibilityType[] | boolean;
+    file: boolean;
+    description: boolean;
+    action: boolean;
 }
 `;
-
-export const iconNativeOutput = `/**
+export const fileNativeOutput = `/**
  * This file was generated from MyWidget.xml
  * WARNING: All changes made to this file will be overwritten
  * @author Mendix Widgets Team
  */
-import { DynamicValue, IconValue } from "mendix";
+import { ActionValue, DynamicValue, EditableValue, FileValue } from "mendix";
 
 interface CommonProps<Style> {
     name: string;
     style: Style[];
 }
 
-export interface IconsType {
-    firstIcon: DynamicValue<IconValue>;
-    secondIcon: DynamicValue<IconValue>;
-}
-
 export interface MyWidgetProps<Style> extends CommonProps<Style> {
-    icons: IconsType[];
+    file: DynamicValue<FileValue>;
+    description: EditableValue<string>;
+    action?: ActionValue;
 }
 `;

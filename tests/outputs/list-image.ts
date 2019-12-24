@@ -5,7 +5,7 @@ export const listImageWebOutput = `/**
  */
 import { CSSProperties } from "react";
 import { ActionPreview } from "@mendix/pluggable-widgets-typing-generator/dist/typings";
-import { DynamicValue, WebImage } from "mendix";
+import { DynamicValue, ImageValue } from "mendix";
 
 interface CommonProps {
     name: string;
@@ -15,11 +15,11 @@ interface CommonProps {
 }
 
 export interface ActionsType {
-    image: DynamicValue<WebImage>;
+    image: DynamicValue<ImageValue>;
 }
 
 export interface ActionsPreviewType {
-    image: WebImage;
+    image: ImageValue;
 }
 
 export interface ActionsVisibilityType {
@@ -46,7 +46,7 @@ export const listImageNativeOutput = `/**
  * WARNING: All changes made to this file will be overwritten
  * @author Mendix Widgets Team
  */
-import { DynamicValue, NativeImage } from "mendix";
+import { DynamicValue, ImageValue } from "mendix";
 
 interface CommonProps<Style> {
     name: string;
@@ -54,7 +54,7 @@ interface CommonProps<Style> {
 }
 
 export interface ActionsType {
-    image: DynamicValue<NativeImage>;
+    image: DynamicValue<ImageValue>;
 }
 
 export interface MyWidgetProps<Style> extends CommonProps<Style> {
