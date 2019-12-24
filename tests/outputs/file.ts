@@ -16,6 +16,7 @@ interface CommonProps {
 
 export interface MyWidgetContainerProps extends CommonProps {
     file: DynamicValue<FileValue>;
+    file2?: DynamicValue<FileValue>;
     description: EditableValue<string>;
     action?: ActionValue;
 }
@@ -25,12 +26,14 @@ export interface MyWidgetPreviewProps {
     style: string;
     styleObject: CSSProperties;
     file: FileValue;
+    file2?: FileValue;
     description: string;
     action: ActionPreview;
 }
 
 export interface VisibilityMap {
     file: boolean;
+    file2: boolean;
     description: boolean;
     action: boolean;
 }
@@ -49,6 +52,7 @@ interface CommonProps<Style> {
 
 export interface MyWidgetProps<Style> extends CommonProps<Style> {
     file: DynamicValue<FileValue>;
+    file2?: DynamicValue<FileValue>;
     description: EditableValue<string>;
     action?: ActionValue;
 }
