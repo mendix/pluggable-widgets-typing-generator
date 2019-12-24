@@ -287,8 +287,6 @@ function findImports(mainTypes: string, childTypes: string[]): string {
         "DynamicValue",
         "EditableValue",
         "FileValue",
-        "IconValue",
-        "ImageValue",
         "NativeIcon",
         "NativeImage",
         "WebIcon",
