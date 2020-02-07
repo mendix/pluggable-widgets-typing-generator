@@ -408,7 +408,8 @@ ${modelerVisibilityMap}
 }`
         : "";
     const commonProps = !mobile
-        ? `class: string;
+        ? `id: string;
+    class: string;
     style?: CSSProperties;
     tabIndex: number;`
         : "style: Style[];";
