@@ -28,6 +28,11 @@ const translateType = (
                     message: "[XML] Attribute property requires attributeTypes element"
                 });
             }
+            if (prop.$.hasOwnProperty("dataSource")) {
+                return preview && !isChild
+                    ? "(item: ObjectItem) => string"
+                    : `(item: ObjectItem) => EditableValue<${findTypes(prop.attributeTypes[0])}>`;
+            }
             return preview && !isChild ? "string" : `EditableValue<${findTypes(prop.attributeTypes[0])}>`;
         case "expression":
             if (!prop.returnType || prop.returnType.length === 0) {
@@ -38,6 +43,9 @@ const translateType = (
             const type = translateAttributeType(prop.returnType[0].$.type);
             return preview && !isChild ? type : `DynamicValue<${type}>`;
         case "action":
+            if (prop.$.hasOwnProperty("dataSource")) {
+                return `(item: ObjectItem) => ${preview && !isChild ? "ActionPreview" : "ActionValue"}`;
+            }
             return preview ? "ActionPreview" : "ActionValue";
         case "translatableString":
         case "textTemplate":

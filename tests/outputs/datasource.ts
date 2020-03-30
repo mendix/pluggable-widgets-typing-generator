@@ -18,6 +18,8 @@ interface CommonProps {
 export interface MyWidgetContainerProps extends CommonProps {
     contentSource: ListValue;
     content: (item: ObjectItem) => ReactNode;
+    markerDataAttribute: (item: ObjectItem) => EditableValue<string | boolean | BigJs.Big>;
+    actionAttribute?: (item: ObjectItem) => ActionValue;
     description: EditableValue<string>;
     action?: ActionValue;
 }
@@ -28,6 +30,8 @@ export interface MyWidgetPreviewProps {
     styleObject: CSSProperties;
     contentSource: ListValue;
     content: (item: ObjectItem) => ({ widgetCount: number; renderer: Component });
+    markerDataAttribute: (item: ObjectItem) => string;
+    actionAttribute: (item: ObjectItem) => ActionPreview;
     description: string;
     action: ActionPreview;
 }
@@ -35,6 +39,8 @@ export interface MyWidgetPreviewProps {
 export interface VisibilityMap {
     contentSource: boolean;
     content: boolean;
+    markerDataAttribute: boolean;
+    actionAttribute: boolean;
     description: boolean;
     action: boolean;
 }
@@ -55,6 +61,8 @@ interface CommonProps<Style> {
 export interface MyWidgetProps<Style> extends CommonProps<Style> {
     contentSource: ListValue;
     content: (item: ObjectItem) => ReactNode;
+    markerDataAttribute: (item: ObjectItem) => EditableValue<string | boolean | BigJs.Big>;
+    actionAttribute?: (item: ObjectItem) => ActionValue;
     description: EditableValue<string>;
     action?: ActionValue;
 }
