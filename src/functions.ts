@@ -30,7 +30,7 @@ const translateType = (
             }
             if (prop.$.hasOwnProperty("dataSource")) {
                 return preview && !isChild
-                    ? "(item: ObjectItem) => string"
+                    ? "(item: { type: string }) => string"
                     : `(item: ObjectItem) => EditableValue<${findTypes(prop.attributeTypes[0])}>`;
             }
             return preview && !isChild ? "string" : `EditableValue<${findTypes(prop.attributeTypes[0])}>`;
@@ -44,7 +44,7 @@ const translateType = (
             return preview && !isChild ? type : `DynamicValue<${type}>`;
         case "action":
             if (prop.$.hasOwnProperty("dataSource")) {
-                return `(item: ObjectItem) => ${preview && !isChild ? "ActionPreview" : "ActionValue"}`;
+                return preview ? "(item: { type: string }) => ActionPreview" : "(item: ObjectItem) => ActionValue";
             }
             return preview ? "ActionPreview" : "ActionValue";
         case "translatableString":
