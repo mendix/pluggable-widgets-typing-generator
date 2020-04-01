@@ -29,9 +29,9 @@ export interface MyWidgetPreviewProps {
     style: string;
     styleObject: CSSProperties;
     contentSource: ListValue;
-    content: (item: ObjectItem) => ({ widgetCount: number; renderer: Component });
-    markerDataAttribute: (item: ObjectItem) => string;
-    actionAttribute: (item: ObjectItem) => ActionPreview;
+    content: (item: { type: string }) => ({ widgetCount: number; renderer: Component });
+    markerDataAttribute: (item: { type: string }) => string;
+    actionAttribute: (item: { type: string }) => ActionPreview;
     description: string;
     action: ActionPreview;
 }

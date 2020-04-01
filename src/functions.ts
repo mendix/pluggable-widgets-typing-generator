@@ -72,9 +72,9 @@ const translateType = (
             return prop.$.type;
         case "widgets":
             if (prop.$.hasOwnProperty("dataSource")) {
-                return `(item: ObjectItem) => ${
-                    preview ? "({ widgetCount: number; renderer: Component })" : "ReactNode"
-                }`;
+                return preview
+                    ? "(item: { type: string }) => ({ widgetCount: number; renderer: Component })"
+                    : "(item: ObjectItem) => ReactNode";
             }
             return preview ? "{ widgetCount: number; renderer: Component }" : "ReactNode";
         case "file":
