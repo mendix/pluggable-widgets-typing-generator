@@ -63,9 +63,19 @@ const translateType = (
         case "string":
             return prop.$.type;
         case "widgets":
+            if (prop.$.hasOwnProperty("dataSource")) {
+                return "(item: ObjectItem) => ReactNode";
+            }
             return "ReactNode";
         case "file":
             return preview && !isChild ? "FileValue" : "DynamicValue<FileValue>";
+        case "datasource":
+            if (prop.$.hasOwnProperty("isList")) {
+                if (prop.$.isList) {
+                    return "ListValue";
+                }
+            }
+            return "";
         default:
             return "any";
     }
@@ -287,8 +297,10 @@ function findImports(mainTypes: string, childTypes: string[]): string {
         "DynamicValue",
         "EditableValue",
         "FileValue",
+        "ListValue",
         "NativeIcon",
         "NativeImage",
+        "ObjectItem",
         "WebIcon",
         "WebImage"
     ].filter(type => types.includes(type));
